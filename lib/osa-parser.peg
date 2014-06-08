@@ -1,0 +1,125 @@
+/*
+  Based entirely on https://github.com/dmajda/pegjs/blob/master/examples/json.pegjs
+*/
+
+osascript
+  = ws value:value ws { return value; }
+
+begin_object    = ws "{" ws
+end_object      = ws "}" ws
+name_separator  = ws ":" ws
+value_separator = ws "," ws
+
+ws "whitespace" = [ \t\n\r]*
+
+/* ----- 3. Values ----- */
+
+value
+  = false
+  / true
+  / object
+  / array
+  / number
+  / string
+  / date
+
+false = "false" { return false; }
+true  = "true"  { return true;  }
+
+/* ----- 4. Objects ----- */
+
+object
+  = begin_object
+    members:(
+      first:member
+      rest:(value_separator m:member { return m; })*
+      {
+        var result = {}, i;
+
+        result[first.name] = first.value;
+
+        for (i = 0; i < rest.length; i++) {
+          result[rest[i].name] = rest[i].value;
+        }
+
+        return result;
+      }
+    )?
+    end_object
+    { return members !== null ? members: {}; }
+
+member
+  = name:key name_separator value:value {
+      return { name: name, value: value };
+    }
+
+key
+  = chars:[ a-z0-9-]i+ { return chars.join("").trim(); }
+
+
+/* ----- 5. Arrays ----- */
+
+array
+  = begin_object
+    values:(
+      first:value
+      rest:(value_separator v:value { return v; })*
+      { return [first].concat(rest); }
+    )?
+    end_object
+    { return values !== null ? values : []; }
+
+/* ----- 6. Numbers ----- */
+
+number "number"
+  = minus? int frac? exp? { return parseFloat(text()); }
+
+decimal_point = "."
+digit1_9      = [1-9]
+e             = [eE]
+exp           = e (minus / plus)? DIGIT+
+frac          = decimal_point DIGIT+
+int           = zero / (digit1_9 DIGIT*)
+minus         = "-"
+plus          = "+"
+zero          = "0"
+
+/* ----- 7. Strings ----- */
+
+string "string"
+  = quotation_mark chars:char* quotation_mark { return chars.join(""); }
+
+char
+  = unescaped
+  / escape
+    sequence:(
+        '"'
+      / "\\"
+      / "/"
+      / "b" { return "\b"; }
+      / "f" { return "\f"; }
+      / "n" { return "\n"; }
+      / "r" { return "\r"; }
+      / "t" { return "\t"; }
+      / "u" digits:$(HEXDIG HEXDIG HEXDIG HEXDIG) {
+          return String.fromCharCode(parseInt(digits, 16));
+        }
+    )
+    { return sequence; }
+
+escape         = "\\"
+quotation_mark = '"'
+unescaped      = [\x20-\x21\x23-\x5B\x5D-\u10FFFF]
+
+
+/* ----- 8. Date ----- */
+
+date "date"
+ = "date" ws date:string { return new Date(date); }
+
+
+/* ----- Core ABNF Rules ----- */
+
+/* See RFC 4234, Appendix B (http://tools.ietf.org/html/rfc4627). */
+DIGIT  = [0-9]
+HEXDIG = [0-9a-f]i

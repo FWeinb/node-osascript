@@ -1,0 +1,23 @@
+{
+  "name": "node-osascript",
+  "version": "0.0.1",
+  "description": "Execute applescript from node",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "keywords": [
+    "apple",
+    "script"
+  ],
+  "author": "Fabrice Weinberg <Fabrice@weinberg.me>",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-nodeunit": "^0.4.0",
+    "grunt-peg": "^1.3.1"
+  },
+  "dependencies": {
+    "buffers": "^0.1.1"
+  }
+}
