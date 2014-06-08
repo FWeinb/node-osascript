@@ -1,4 +1,4 @@
-node-osascript
+node-osascript [![NPM version](https://badge.fury.io/js/node-osascript.svg)](http://badge.fury.io/js/node-osascript) [![Build Status](https://travis-ci.org/FWeinb/node-osascript.svg?branch=master)](https://travis-ci.org/FWeinb/node-osascript)
 --------
 > Use AppleScript from node.js
 
