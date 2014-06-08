@@ -10,6 +10,13 @@ Execute AppleScript from node.js and process the results.
 $ npm install node-oasascript
 ```
 
+## Overview
+
+Execute apple script and use the results of the javascript in node.
+The result is transformed into a javascript object using PEG.js
+So AppleScript lists are transformed into an `Array`, Records into a plain `object` and
+Dates to the `Date` type as well as `Numbers`, `Booleans` and `Strings`.
+
 ## Examples
 
 ### Simple
