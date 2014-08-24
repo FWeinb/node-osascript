@@ -11,6 +11,7 @@
     "script"
   ],
   "author": "Fabrice Weinberg <Fabrice@weinberg.me>",
+  "repository": "https://github.com/FWeinb/node-osascript",
   "license": "MIT",
   "devDependencies": {
     "grunt": "^0.4.5",
