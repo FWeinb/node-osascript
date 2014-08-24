@@ -1,14 +1,16 @@
 {
   "name": "node-osascript",
   "version": "0.0.1",
-  "description": "Execute applescript from node",
+  "description": "Execute AppleScript from Node",
   "main": "./lib/index.js",
   "scripts": {
     "test": "grunt test"
   },
   "keywords": [
     "apple",
-    "script"
+    "script",
+    "applescript",
+    "osascript"
   ],
   "author": "Fabrice Weinberg <Fabrice@weinberg.me>",
   "repository": "https://github.com/FWeinb/node-osascript",
