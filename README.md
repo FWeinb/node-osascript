@@ -79,3 +79,12 @@ npm test
 ### License
 
 MIT
+
+### Changelog
+
+##### `1.0.0`
+ * Stable release 
+ * Fix package.json
+
+##### `0.0.1` 
+ * Inital release 

@@ -1,6 +1,6 @@
 {
   "name": "node-osascript",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Execute AppleScript from Node",
   "main": "./lib/index.js",
   "scripts": {
