@@ -22,9 +22,14 @@ value
   / number
   / string
   / date
+  / empty
 
 false = "false" { return false; }
 true  = "true"  { return true;  }
+
+
+empty
+ = ws { return null; }
 
 /* ----- 4. Objects ----- */
 

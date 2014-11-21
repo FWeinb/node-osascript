@@ -17,6 +17,14 @@ module.exports = {
     });
   },
 
+  emptyResult : function (test) {
+    test.expect(1);
+    osascript.execute('beep', function(err, result, raw){
+      test.equal(result, null, "Should be null");
+      test.done();
+    });
+  },
+
   error : function (test) {
     test.expect(2);
     osascript.execute('This is not valid applescript', function(err, result, raw){
