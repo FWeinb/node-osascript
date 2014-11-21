@@ -82,6 +82,9 @@ MIT
 
 ### Changelog
 
+##### `1.0.1`
+ * Fix a bug where empty results where considert an error (Fix [#2](https://github.com/FWeinb/node-osascript/issues/2))
+
 ##### `1.0.0`
  * Stable release 
  * Fix package.json
