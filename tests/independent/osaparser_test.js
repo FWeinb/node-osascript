@@ -47,6 +47,12 @@ module.exports = {
     test.expect(1);
     test.equal(parse('date "Sunday 8 June 2014 13:58:49"').getTime(), new Date("Sunday 8 June 2014 13:58:49").getTime(), "Parse date to date object");
     test.done();
+  },
+
+  parseEmpty : function(test){
+    test.expect(1);
+    test.equal(parse(''), null, "Should be emtpy");
+    test.done();
   }
 
 };

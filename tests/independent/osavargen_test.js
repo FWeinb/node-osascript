@@ -40,6 +40,12 @@ module.exports = {
     test.expect(1);
     test.deepEqual(serializeObject(["this", "is", "an", {"object" : "in"}, "an", "array"]), '{"this","is","an",{object:"in"},"an","array"}', "Nested Object in Array");
     test.done();
+  },
+
+  parseEmpty : function(test){
+    test.expect(1);
+    test.equals(serializeObject(null), '', "Nothing");
+    test.done();
   }
 
 };

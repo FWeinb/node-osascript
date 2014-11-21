@@ -2,7 +2,7 @@ module.exports = function(grunt){
   grunt.initConfig({
     nodeunit: {
       all: ['./tests/**/*_test.js'],
-      platformIndipendent : ['./tests/indipendent/*_test.js']
+      platformIndipendent : ['./tests/independent/*_test.js']
     },
     peg: {
       parser: {
