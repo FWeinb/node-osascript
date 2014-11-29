@@ -82,6 +82,10 @@ MIT
 
 ### Changelog
 
+
+##### `1.0.2`
+ * Unrecognized result is know always treated as a raw string. (Fix [#3](https://github.com/FWeinb/node-osascript/issues/3))
+
 ##### `1.0.1`
  * Fix a bug where empty results where considert an error (Fix [#2](https://github.com/FWeinb/node-osascript/issues/2))
 

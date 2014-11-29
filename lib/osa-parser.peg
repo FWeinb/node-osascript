@@ -22,14 +22,14 @@ value
   / number
   / string
   / date
-  / empty
+  / raw
 
 false = "false" { return false; }
 true  = "true"  { return true;  }
 
 
-empty
- = ws { return null; }
+raw
+ = ws chars:.* ws { return (chars.length > 0) ? chars.join('') : null; }
 
 /* ----- 4. Objects ----- */
 
