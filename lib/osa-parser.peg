@@ -127,7 +127,11 @@ unquoted_char = [^,}]
 /* ----- 8. Date ----- */
 
 date "date"
- = "date" ws date:string { return new Date(date); }
+ = "date" ws date:string { dateObject = new Date(date);
+                           if (!isNaN(dateObject.getTime()))
+                             return dateObject;
+                           else
+                             return date; }
 
 
 /* ----- Core ABNF Rules ----- */
