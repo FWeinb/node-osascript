@@ -83,8 +83,8 @@ MIT
 ### Changelog
 
 ##### `1.0.3`
- * When date cannot be parsed by Javascript, return original string value (See [#5](https://github.com/FWeinb/node-osascript/issues/3))
- *Added support for multiline strings and for unquoted strings in osascript output (See [#5](https://github.com/FWeinb/node-osascript/issues/3))
+ * When date cannot be parsed by Javascript, return original string value (See [#5](https://github.com/FWeinb/node-osascript/issues/3))  
+ * Added support for multiline strings and for unquoted strings in osascript output (See [#5](https://github.com/FWeinb/node-osascript/issues/3))
 
 ##### `1.0.2`
  * Unrecognized result is know always treated as a raw string. (Fix [#3](https://github.com/FWeinb/node-osascript/issues/3))
