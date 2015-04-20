@@ -49,10 +49,28 @@ module.exports = {
     test.done();
   },
 
+  preserveOriginalStringInDate: function(test) {
+    test.expect(1);
+    test.equal(parse('date "Date in format unrecognized by Javascript"'), 'Date in format unrecognized by Javascript', "Preserve original date string when Javascript cannot parse it");
+    test.done();
+  },
+
   parseEmpty : function(test){
     test.expect(1);
     test.equal(parse(''), null, "Should be emtpy");
     test.done();
-  }
+  },
 
+  parseMultilineString: function(test) {
+    test.expect(1);
+    test.deepEqual(parse('{foo:"bar\n\tbaz"}'), {"foo": "bar\n\tbaz"}, "String with line-breaks and tab characters");
+    test.done();
+  },
+
+  parseUnquotedString: function(test) {
+    test.expect(2);
+    test.deepEqual(parse('{foo:simple string value without quotes}'), {"foo": "simple string value without quotes"}, "Simple string value without quotes");
+    test.deepEqual(parse('{foo: project id "111-222-333" of application "Things"}'), {"foo": "project id \"111-222-333\" of application \"Things\""}, "Unquoted string value with quotes inside");
+    test.done();
+  }
 };
