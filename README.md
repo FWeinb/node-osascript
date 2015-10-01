@@ -52,7 +52,7 @@ osascript.execute('display dialog message', { message : "Hello from Node.JS" },f
 Execute the `script`, if specified injecting the `variables` into the AppleScript.
 
 ```js
-osascript.execute('script', { varName : 'value'}, function(error, result, raw){
+osascript.execute('script', { varName : 'value'}, function(err, result, raw){
   if (err) return console.error(err)
     console.log(result, raw)
 });
@@ -63,7 +63,7 @@ osascript.execute('script', { varName : 'value'}, function(error, result, raw){
 Execute file in `path`, if specified injecting the `variables` into the AppleScript.
 
 ```js
-osascript.executeFile('path/to/script.scpt', { varName : 'value'}, function(error, result, raw){
+osascript.executeFile('path/to/script.scpt', { varName : 'value'}, function(err, result, raw){
   if (err) return console.error(err)
     console.log(result, raw)
 });
