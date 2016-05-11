@@ -82,6 +82,10 @@ MIT
 
 ### Changelog
 
+
+##### `1.0.4`
+ * Fix for breaking change in node 6 (See [#7](https://github.com/FWeinb/node-osascript/issues/7) Thanks to [rosszurowski](https://github.com/rosszurowski));
+
 ##### `1.0.3`
  * When date cannot be parsed by Javascript, return original string value (See [#5](https://github.com/FWeinb/node-osascript/issues/3))  
  * Added support for multiline strings and for unquoted strings in osascript output (See [#5](https://github.com/FWeinb/node-osascript/issues/3))
@@ -93,8 +97,8 @@ MIT
  * Fix a bug where empty results where considert an error (Fix [#2](https://github.com/FWeinb/node-osascript/issues/2))
 
 ##### `1.0.0`
- * Stable release 
+ * Stable release
  * Fix package.json
 
-##### `0.0.1` 
- * Inital release 
+##### `0.0.1`
+ * Inital release
