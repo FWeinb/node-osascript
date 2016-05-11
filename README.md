@@ -84,7 +84,8 @@ MIT
 
 
 ##### `1.0.4`
- * Fix for breaking change in node 6 (See [#7](https://github.com/FWeinb/node-osascript/issues/7) Thanks to [rosszurowski](https://github.com/rosszurowski));
+ * Fix for breaking change in node 6 (See [#7](https://github.com/FWeinb/node-osascript/issues/7) Thanks to [rosszurowski](https://github.com/rosszurowski))
+ * Update dependencies
 
 ##### `1.0.3`
  * When date cannot be parsed by Javascript, return original string value (See [#5](https://github.com/FWeinb/node-osascript/issues/3))  
