@@ -71,9 +71,14 @@ osascript.executeFile('path/to/script.scpt', { varName : 'value'}, function(err,
 
 ### Tests
 
+To run platform independent tests use:
 ```
-npm install grunt-cli --global
 npm test
+```
+
+If you are on macOS you can run all tests using:
+```
+npm testall
 ```
 
 ### License
@@ -82,6 +87,10 @@ MIT
 
 ### Changelog
 
+##### `2.0.0`
+ * Remove grunt
+ * Upgrade to `pegjs@0.10.0`
+ * lint using `xo`
 
 ##### `1.0.4`
  * Fix for breaking change in node 6 (See [#7](https://github.com/FWeinb/node-osascript/issues/7) Thanks to [rosszurowski](https://github.com/rosszurowski))
