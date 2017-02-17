@@ -1,10 +1,12 @@
 {
   "name": "node-osascript",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "Execute AppleScript from Node",
   "main": "./lib/index.js",
   "scripts": {
-    "test": "grunt test"
+    "testall": "npm run build && nodeunit tests/**",
+    "test": "npm run build && nodeunit tests/independent",
+    "build": "pegjs ./lib/osa-parser.peg"
   },
   "keywords": [
     "apple",
@@ -16,9 +18,9 @@
   "repository": "https://github.com/FWeinb/node-osascript",
   "license": "MIT",
   "devDependencies": {
-    "grunt": "^1.0.1",
-    "grunt-contrib-nodeunit": "^1.0.0",
-    "grunt-peg": "^2.0.1"
+    "nodeunit": "^0.11.0",
+    "pegjs": "^0.10.0",
+    "xo": "^0.17.1"
   },
   "dependencies": {
     "buffers": "^0.1.1"

@@ -97,6 +97,8 @@ string "string"
 
 char
   = unescaped
+	/ "\n"
+	/ "\t"
   / escape
     sequence:(
         '"'
@@ -115,7 +117,7 @@ char
 
 escape         = "\\"
 quotation_mark = '"'
-unescaped      = [\n\t\x20-\x21\x23-\x5B\x5D-\u10FFFF]
+unescaped      = [^\0-\x1F\x22\x5C]
 
 unquoted_string "unquoted string"
   = first_char:first_unquoted_char chars:unquoted_char* { return first_char+chars.join(""); }
@@ -127,11 +129,10 @@ unquoted_char = [^,}]
 /* ----- 8. Date ----- */
 
 date "date"
- = "date" ws date:string { dateObject = new Date(date);
-                           if (!isNaN(dateObject.getTime()))
-                             return dateObject;
-                           else
-                             return date; }
+ = "date" ws date:string {
+  var dateObject = new Date(date);
+  return !isNaN(dateObject.getTime()) ? dateObject : date;
+ }
 
 
 /* ----- Core ABNF Rules ----- */
