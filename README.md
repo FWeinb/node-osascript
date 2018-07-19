@@ -4,6 +4,22 @@
 
 Execute AppleScript from node.js and process the results.
 
+<details>
+  <summary><b>Table of Contents</b></summary>
+
+- [Install](#install)
+- [Overview](#overview)
+- [Examples](#examples)
+  - [Simple](#simple)
+  - [Injecting Variables](#injecting-variables)
+  - [Timeout](#timeout)
+- [API](#api)
+- [Tests](#tests)
+- [License](#license)
+- [Changelog](#changelog)
+
+</details>
+
 ## Install
 
 ```sh
@@ -30,7 +46,7 @@ osascript.execute('display dialog "What should I do?" buttons {"Go home", "Work"
 });
 ```
 
-### Injecting variables
+### Injecting Variables
 
 You can inject a javascript object into the script to have acces to these variables.
 
@@ -43,11 +59,33 @@ osascript.execute('display dialog message', { message : "Hello from Node.JS" },f
 });
 ```
 
-### API
+### Timeout
 
-#### Methods
+You can force an AppleScript to stop running
 
-##### `execute(script, [variables], callback)`
+```js
+  var osascript = require('node-osascript');
+
+  var childProcess = osascript.execute('display dialog "What should I do?" buttons {"Go home", "Work", "Nothing"}\nset DlogResult to result\n return result', function(err, result, raw){
+    if (err) return console.error(err)
+    console.log(result, raw)
+  });
+
+  //after 20 seconds, the AppleScript will be killed
+  setTimeout(function(){
+    console.log('kill');
+    childProcess.stdin.pause();
+    childProcess.kill();
+  },20000)
+
+```
+
+
+## API
+
+### Methods
+
+#### `execute(script, [variables], callback)`
 
 Execute the `script`, if specified injecting the `variables` into the AppleScript.
 
@@ -58,7 +96,7 @@ osascript.execute('script', { varName : 'value'}, function(err, result, raw){
 });
 ```
 
-##### `executeFile(path, [variables], callback)`
+#### `executeFile(path, [variables], callback)`
 
 Execute file in `path`, if specified injecting the `variables` into the AppleScript.
 
@@ -69,7 +107,7 @@ osascript.executeFile('path/to/script.scpt', { varName : 'value'}, function(err,
 });
 ```
 
-### Tests
+## Tests
 
 To run platform independent tests use:
 ```
@@ -81,13 +119,17 @@ If you are on macOS you can run all tests using:
 npm testall
 ```
 
-### License
+## License
 
 MIT
 
-### Changelog
+## Changelog
 
-##### `2.0.0`
+#### `2.0.1`
+ * Ability to kill a running AppleScript
+ * README documentation
+
+#### `2.0.0`
  * Remove grunt
  * Upgrade to `pegjs@0.10.0`
  * lint using `xo`
@@ -96,19 +138,19 @@ MIT
  * Fix for breaking change in node 6 (See [#7](https://github.com/FWeinb/node-osascript/issues/7) Thanks to [rosszurowski](https://github.com/rosszurowski))
  * Update dependencies
 
-##### `1.0.3`
+#### `1.0.3`
  * When date cannot be parsed by Javascript, return original string value (See [#5](https://github.com/FWeinb/node-osascript/issues/3))  
  * Added support for multiline strings and for unquoted strings in osascript output (See [#5](https://github.com/FWeinb/node-osascript/issues/3))
 
-##### `1.0.2`
+#### `1.0.2`
  * Unrecognized result is know always treated as a raw string. (Fix [#3](https://github.com/FWeinb/node-osascript/issues/3))
 
-##### `1.0.1`
+#### `1.0.1`
  * Fix a bug where empty results where considert an error (Fix [#2](https://github.com/FWeinb/node-osascript/issues/2))
 
-##### `1.0.0`
+#### `1.0.0`
  * Stable release
  * Fix package.json
 
-##### `0.0.1`
+#### `0.0.1`
  * Inital release
